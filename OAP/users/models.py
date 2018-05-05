@@ -2,11 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    name = models.CharField(max_length=50, default='')
-    address = models.CharField(max_length=80, default='')
-    mobile = models.IntegerField(default=None)
-    home = models.IntegerField(blank=True,default=None)
-    workPhone=models.IntegerField(blank=True, default=None)
+    username = models.CharField(max_length=50, default='')
+    address = models.CharField(max_length=80, default='', blank =True, null =True)
+    mobile = models.IntegerField(default=None, blank = True, null =True)
+    home = models.IntegerField(blank=True,default=None, null =True)
+    workPhone=models.IntegerField(blank=True, default=None, null =True)
     
     class Meta(AbstractUser.Meta):
         pass

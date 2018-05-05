@@ -4,5 +4,5 @@ from .models import User
 class RegisterForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields =("email",)
+        fields =("username",)
 

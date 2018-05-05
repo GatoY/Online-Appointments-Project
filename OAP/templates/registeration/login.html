@@ -1,15 +1,15 @@
-﻿{% extends 'users/base.html' %}
+{% extends 'users/base.html' %}
 {% load static %}
 
 {% block content %}
-
 <div class="flex-center">
     <div class="container">
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
-                <h3>Register</h3>
-                <form class="form" action="{% url 'users:register' %}" method="post">
+                <h3>Login</h3>
+                <form class="form" action="{% url 'users:login' %}" method="post">
                     {% csrf_token %}
+                    {{ form.non_field_errors }}
                     {% for field in form %}
                         {{ field.label_tag }}
                         {{ field }}
@@ -18,14 +18,14 @@
                             <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
                         {% endif %}
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary btn-block">register</button>
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
                 </form>
-                <div class="flex-center top-gap text-small">
-                    <a href="login.html">Already logged in</a>
+                <div class="flex-left top-gap text-small">
+                    <div class="unit-2-3"><span>No account？<a href="{% url 'users:register' %}">Sign up</a></span></div>
+                    <div class="unit-1-3 flex-right"><span><a>forget password？</a></span></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock content %}
