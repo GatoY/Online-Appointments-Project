@@ -4,6 +4,12 @@ from .forms import RegisterForm
 def home(request):
     return render(request, 'users/home.html')
 
+def info(request):
+    return render(request, 'users/info.html')
+
+def doginfo(request):
+    return render(request, 'users/doginfo.html')
+
 def register(request):
     if request.method == 'POST':
         form=RegisterForm(request.POST)
