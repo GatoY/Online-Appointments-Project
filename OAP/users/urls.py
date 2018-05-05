@@ -21,10 +21,10 @@ from . import views
 app_name = 'users'
 
 urlpatterns = [
-    path('', views.home),
-    path('admin/', admin.site.urls),
+    #path('', views.home),
+    #path('admin/', admin.site.urls),
     path('register/', views.register, name='register'),
-               #path('users/', include('users.urls')),
-               #path('users/', include('django.contrib.auth.urls')),
+    #path('users/', include('users.urls')),
+    #path('users/', include('django.contrib.auth.urls')),
 ]
 

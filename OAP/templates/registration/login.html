@@ -7,7 +7,7 @@
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
                 <h3>Login</h3>
-                <form class="form" action="{% url 'users:login' %}" method="post">
+                <form class="form" action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     {% for field in form %}
@@ -18,7 +18,7 @@
                             <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
                         {% endif %}
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
                 </form>
                 <div class="flex-left top-gap text-small">
                     <div class="unit-2-3"><span>No account？<a href="{% url 'users:register' %}">Sign up</a></span></div>
