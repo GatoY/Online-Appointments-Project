@@ -18,6 +18,7 @@
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
                 <h3>Register</h3>
+                <p>#Username should be your Email</p>
                 <form class="form" action="{% url 'users:register' %}" method="post">
                     {% csrf_token %}
                     {% for field in form %}
