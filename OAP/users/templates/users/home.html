@@ -2,5 +2,14 @@
 {% load static %}
 
 {% block content %}
-Welcome!
-{% endblock content%}
+    {% if user.is_authenticated %}
+        <p>Welcome! You have logged in successfully</p>
+    {% else %}
+        <p>Please log in first.</p>
+        <script type="text/javascript">
+            setTimeout(window.location.href = '{% url 'users:login' %}',3);
+        </script>
+    {% endif %}
+{% endblock content %}
+
+

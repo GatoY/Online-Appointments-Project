@@ -24,10 +24,15 @@ urlpatterns = [
     #path('', views.home),
     #path('admin/', admin.site.urls),
     path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('logout/', views.logout, name = 'logout'),
     path('home/', views.home, name ='home'),
     path('info/', views.info, name ='info'),
-    path('doginfo/', views.doginfo, name ='doginfo')
-    #path('users/', include('users.urls')),
-    #path('users/', include('django.contrib.auth.urls')),
+    path('doginfo/', views.doginfo, name ='doginfo'),
+    path('schedule/', views.schedule, name ='schedule'),
+    path('mybook/', views.mybook, name ='mybook'),
+    path('booking/', views.booking, name ='booking'),
+    # path('users/', include('users.urls')),
+    # path('users/', include('django.contrib.auth.urls')),
 ]
 

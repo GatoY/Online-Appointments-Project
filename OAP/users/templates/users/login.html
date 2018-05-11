@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+
+
+<!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
     <style>
         .errorlist {
@@ -17,9 +19,10 @@
     <div class="container">
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
-                <h3>Register</h3>
-                <form class="form" action="{% url 'users:register' %}" method="post">
+                <h3>Login</h3>
+                <form class="form" action="{% url 'users:login' %}" method="post">
                     {% csrf_token %}
+                    {{ form.non_field_errors }}
                     {% for field in form %}
                         {{ field.label_tag }}
                         {{ field }}
@@ -28,10 +31,10 @@
                             <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
                         {% endif %}
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary btn-block">Register Confirm</button>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
-                <div class="flex-center top-gap text-small">
-                    <a href="{% url 'users:login' %}">Already Registered?</a>
+                <div class="flex-left top-gap text-small">
+                    <div class="unit-2-3"><span>No username？<a href="{% url 'users:register' %}">Register</a></span></div>
                 </div>
             </div>
         </div>
