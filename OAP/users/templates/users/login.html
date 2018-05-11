@@ -20,7 +20,7 @@
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
                 <h3>Login</h3>
-                <form class="form" action="{% url 'users:login' %}" method="post">
+                <form class="form" action="{% url 'users:userLogin' %}" method="post">
                     {% csrf_token %}
                     {{ form.non_field_errors }}
                     {% for field in form %}

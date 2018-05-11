@@ -15,7 +15,7 @@ def doginfo(request):
     return render(request, 'users/doginfo.html')
 
 @csrf_protect
-def login(request):
+def userLogin(request):
     if request.method == 'POST':
         print(2)
         form = LoginForm(request.POST)
@@ -23,20 +23,20 @@ def login(request):
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
         print(4)
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         print(5)
         if user is not None:
             if user.is_active:
                 login(request, user)
                 print(1)
-                return redirect('users/home')
+                return redirect('../../users/home')
     else:
         form = LoginForm()
     return render(request, 'users/login.html', context={'form': form})
 
-def logout(request):
+def userLogout(request):
     logout(request)
-    return redirect('users/login')
+    return redirect('../../users/userLogin')
 
 @csrf_protect
 def register(request):

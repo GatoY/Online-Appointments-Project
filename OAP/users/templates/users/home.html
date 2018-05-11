@@ -7,7 +7,7 @@
     {% else %}
         <p>Please log in first.</p>
         <script type="text/javascript">
-            setTimeout(window.location.href = '{% url 'users:login' %}',3);
+            setTimeout(window.location.href = '{% url 'users:userLogin' %}',3);
         </script>
     {% endif %}
 {% endblock content %}
