@@ -2,5 +2,20 @@
 {% load static %}
 
 {% block content %}
-Welcome!
-{% endblock content%}
+    <h2>Personal Info</h2>
+    {% csrf_token %}
+    <form action="{% url 'users:info' %}">
+
+        {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                            <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    {% endfor %}
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+{% endblock content %}

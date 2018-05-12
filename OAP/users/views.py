@@ -1,14 +1,22 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, InfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
-
+from .models import userInfo, Dog
 def home(request):
     return render(request, 'users/home.html')
 
-
+@csrf_protect
 def info(request):
-    return render(request, 'users/info.html')
+    if request.method=='POST':
+        form = InfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return  redirect('../../users/home')
+    else:
+        form = InfoForm()
+        print(1)
+    return render(request, 'users/info.html', context={'form':form})
 
 
 def doginfo(request):
