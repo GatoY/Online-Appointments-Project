@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from .models import User, userInfo
+from .models import User, userInfo, BookForm
 from django.core.validators import RegexValidator
 
 
@@ -26,3 +26,8 @@ class InfoForm(forms.ModelForm):
     class Meta:
         model = userInfo
         fields = ['address','mobile', 'workPhone', 'home']
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = BookForm
+        fields = ['msg']

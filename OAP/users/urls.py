@@ -32,6 +32,10 @@ urlpatterns = [
     path('schedule/', views.schedule, name ='schedule'),
     path('mybook/', views.mybook, name ='mybook'),
     path('booking/', views.booking, name ='booking'),
+    path('booking/bookDetail', views.bookDetail, name ='bookDetail'),
+    path('booking/event-available', views.bookavailable, name ='bookavailable'),
+    path('booking/event-booked', views.bookbooked, name ='bookbooked'),
+
     # path('users/', include('users.urls')),
     # path('users/', include('django.contrib.auth.urls')),
 ]

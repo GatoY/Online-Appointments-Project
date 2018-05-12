@@ -3,24 +3,28 @@ from .forms import RegisterForm, LoginForm, InfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
 from .models import userInfo, Dog
+
+
 def home(request):
     return render(request, 'users/home.html')
 
+
 @csrf_protect
 def info(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         form = InfoForm(request.POST)
         if form.is_valid():
             form.save()
-            return  redirect('../../users/home')
+            return redirect('../../users/home')
     else:
         form = InfoForm()
         print(1)
-    return render(request, 'users/info.html', context={'form':form})
+    return render(request, 'users/info.html', context={'form': form})
 
 
 def doginfo(request):
     return render(request, 'users/doginfo.html')
+
 
 @csrf_protect
 def userLogin(request):
@@ -42,9 +46,11 @@ def userLogin(request):
         form = LoginForm()
     return render(request, 'users/login.html', context={'form': form})
 
+
 def userLogout(request):
     logout(request)
     return redirect('../../users/userLogin')
+
 
 @csrf_protect
 def register(request):
@@ -68,5 +74,16 @@ def mybook(request):
 
 def booking(request):
     return render(request, 'users/booking.html')
+
+
+def bookavailable(request):
+    return render(request, 'users/event-available.html')
+
+
+def bookbooked(request):
+    return render(request, 'users/event-booked.html')
+
+def bookDetail(request):
+    return render(request, 'users/bookDetail.html')
 
 # Create your views here.

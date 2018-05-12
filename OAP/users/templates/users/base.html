@@ -26,6 +26,7 @@
     <script src="{% static 'users/js/jquery.extend.js' %}" type="text/javascript"></script>
     <link href="{% static 'users/css/default.css' %}" rel="stylesheet" type="text/css" />
     <script src="{% static 'users/js/default.js' %}" type="text/javascript"></script>
+     {% block header %}{% endblock %}
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -66,16 +67,15 @@
                 <li class="has-sub">
                     <a href="javascript:void(0);"><span>Groom Your Dog</span><i class="fa fa-caret-right fa-fw pull-right"></i></a>
                     <ul class="sub-menu">
-                        <li><a href="{% url 'users:mybook' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Booking</a></li>
-                        <li><a href="{% url 'users:booking' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Booking</a></li>
+                        <li><a href="{% url 'users:mybook' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Appointments</a></li>
+                        <li><a href="{% url 'users:booking' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Book</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
-        <div class="maincontent row">
+
            {% block content %}{% endblock %}
             <!--end-->
-        </div>
     </div>
 </body>
 </html>

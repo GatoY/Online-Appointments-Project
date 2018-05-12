@@ -26,3 +26,12 @@ class Dog(models.Model):
     dob = models.DateTimeField('date of birth')
     owner = models.ForeignKey('User', on_delete=models.CASCADE)
 # Create your models here.
+
+# class TimeSchedule(models.Model):
+#     weekday = models.DateField()
+
+class BookForm(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
+    msg = models.CharField(max_length=140, default=' ', blank =True, null=True)
+    time = models.DateTimeField()
