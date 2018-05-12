@@ -85,5 +85,6 @@ def bookbooked(request):
 
 def bookDetail(request):
     return render(request, 'users/bookDetail.html')
-
+def bookSuccess(request):
+    return render(request, 'users/bookSuccess.html')
 # Create your views here.
