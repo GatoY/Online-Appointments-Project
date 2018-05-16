@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, LoginForm, InfoForm
+from .forms import RegisterForm, LoginForm, InfoForm, MakeAppointmentsForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
@@ -133,8 +133,21 @@ def availbleschedule(request):
     context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
     return render(request, 'users/availbleschedule.html', context)
 
+
 def booking(request):
-    return render(request, 'users/booking.html')
+    if request.method == 'POST':
+        print(2)
+        form = MakeAppointmentsForm(request.POST)
+        print(3)
+        if form.is_valid():
+            form.save()
+            return redirect('/users/bookSuccess')
+            # return redirect('../../users/home')
+    else:
+        form = MakeAppointmentsForm()
+    # return render(request, 'users/login.html', context={'form': form})
+    return render(request, 'users/booking.html', context={'form': form})
+
 
 def bookavailable(request):
     return render(request, 'users/event-available.html')

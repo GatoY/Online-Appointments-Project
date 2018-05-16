@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/resources/demos/style.css"/>
     <script>
         $(function () {
-            $("#id_date").datepicker();
+            $("#id_starttime").datepicker();
+            $("#id_endtime").datepicker();
         });
     </script>
 {% endblock %}
@@ -17,10 +18,44 @@
         {% csrf_token %}
         <!--{{ form.date }} -->
 
-        <p>Date: <input name='date' type="text" id="id_date"></p>
+        {#        <p>Date: <input name='date' type="text" id="id_starttime"></p>#}
+        {#        <p>Date: <input name='date' type="text" id="id_starttime"></p>#}
         <!-- The rest of my form -->
-        <input type="submit" value="submit"/>
+        <h2>Appointments Form</h2>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><label>Start Time: </label></div>
+            <div class="col-md-5">
+                <input name='date' type="text" class="form-control" id="id_starttime">
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><label>End Time: </label></div>
+            <div class="col-md-5">
+                <input name='date' type="text" class="form-control" id="id_endtime">
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                {#        <input type="submit" value="submit"/>#}
+                <div class="col-md-4"></div>
+            </div>
+        </div>
     </form>
 {% endblock content %}
-
-
+<!-- The rest of my form -->
+<input type="submit" value="submit"/>

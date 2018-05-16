@@ -34,7 +34,7 @@ class BookForm(forms.ModelForm):
         fields = ['msg']
 '''
 
-class MakeAppointments(forms.ModelForm):
+class MakeAppointmentsForm(forms.ModelForm):
     class Meta:
         model = Appointments
         widgets = {'starttime': forms.DateInput(attrs={'class': 'datepicker'}),
