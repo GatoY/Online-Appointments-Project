@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm, InfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
-from .models import userInfo, Dog
+from .models import userInfo, Dog, Appointments
+import time
+
+WEEK = 3
+YEAR = 2018
 
 
 def home(request):
@@ -72,9 +76,38 @@ def mybook(request):
     return render(request, 'users/mybook.html')
 
 
-def booking(request):
-    return render(request, 'users/booking.html')
+def generateDatelist(startDate, WEEK):
+    datelist = []
+    # datelist.append(startDate)
+    month = int(startDate[:2])
+    day = int(startDate[3:5]) - 1
+    for i in range(0, 5 * WEEK):
+        day = day + 1
+        if day < 29:
+            continue
+        elif day == 29 and month == 2:
+            month = 3
+            day = 1
+        elif day == 31 and month % 2 == 0:
+            if month == 12:
+                month = 1
+            else:
+                month = month + 1
+            day = 1
+        else:
+            month = month + 1
+            day = 1
+        datelist.append(str(day) + '-' + str(month) + '-' + str(YEAR))
+    return datelist
 
+def booking(request):
+    tmp = time.localtime()
+    date = time.strftime('%m-%d', tmp)
+    datelist = generateDatelist(date, WEEK)
+    weekday = time.strftime('%w', tmp)
+    appointmentsList = Appointments.objects.filter(endtime__level__gte = tmp)
+    context = {'appointmentsList': appointmentsList, 'weekday': weekday, 'datelist': datelist}
+    return render(request, 'users/booking.html', context)
 
 def bookavailable(request):
     return render(request, 'users/event-available.html')
@@ -83,8 +116,11 @@ def bookavailable(request):
 def bookbooked(request):
     return render(request, 'users/event-booked.html')
 
+
 def bookDetail(request):
     return render(request, 'users/bookDetail.html')
+
+
 def bookSuccess(request):
     return render(request, 'users/bookSuccess.html')
 # Create your views here.

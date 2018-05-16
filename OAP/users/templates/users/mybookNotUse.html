@@ -19,7 +19,6 @@
 
     <div class="cd-schedule loading">
         <div class="timeline">
-
             <ul>
                 <li><span>09:00</span></li>
                 <li><span>09:30</span></li>
@@ -43,18 +42,32 @@
             </ul>
         </div> <!-- .timeline -->
 
-         <div class="events">
+        <div class="events">
             <ul>
-                {% for i in datelist %}
                 <li class="events-group">
-                    <div class="top-info", id={{ i }}><span>{{ i }}</span></div>
+                    <div class="top-info"><span>Monday</span></div>
+
                     <ul>
+
                     </ul>
                 </li>
-                {% endfor %}
-            <!--
-            <li class="events-group">
+
+                <li class="events-group">
+                    <div class="top-info"><span>Tuesday</span></div>
+                    <ul></ul>
+
+                </li>
+
+                <li class="events-group">
+                    <div class="top-info"><span>Wednesday</span></div>
+                    <ul></ul>
+
+
+                </li>
+
+                <li class="events-group">
                     <div class="top-info"><span>Thursday</span></div>
+
                     <ul>
                         <li class="single-event" data-start="15:30" data-end="18:30" data-content="" event-booked
                         ""
@@ -63,9 +76,23 @@
                             <em class="event-name">You have an appointment today.</em>
                         </a>
                         </li>
+
+
                     </ul>
                 </li>
-            -->
+
+                <li class="events-group">
+                    <div class="top-info"><span>Friday</span></div>
+                    <ul>
+                        <li class="single-event" data-start="09:30" data-end="10:30" data-content="" event-booked
+                        "" data-event="event-1">
+                        <a href="#0">
+                            <em class="event-name">You have an appointment today.</em>
+                        </a>
+                        </li>
+                    </ul>
+
+                </li>
             </ul>
         </div>
 
@@ -86,6 +113,7 @@
 
             <a href="#0" class="close">Close</a>
         </div>
+
         <div class="cover-layer"></div>
     </div> <!-- .cd-schedule -->
 {% endblock content %}

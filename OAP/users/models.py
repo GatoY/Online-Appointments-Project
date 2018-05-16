@@ -30,8 +30,10 @@ class Dog(models.Model):
 # class TimeSchedule(models.Model):
 #     weekday = models.DateField()
 
-class BookForm(models.Model):
+class Appointments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
     msg = models.CharField(max_length=140, default=' ', blank =True, null=True)
-    time = models.DateTimeField()
+    starttime = models.DateTimeField()  #y-m-d-h-m-s
+    endtime = models.DateTimeField()
+    weekday = models.IntegerField() #0-6

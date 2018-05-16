@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from .models import User, userInfo, BookForm
+from .models import User, userInfo, Appointments
 from django.core.validators import RegexValidator
 
 
@@ -29,5 +29,5 @@ class InfoForm(forms.ModelForm):
 
 class BookForm(forms.ModelForm):
     class Meta:
-        model = BookForm
+        model = Appointments
         fields = ['msg']
