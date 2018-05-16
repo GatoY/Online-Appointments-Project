@@ -153,7 +153,7 @@ jQuery(document).ready(function($){
 
 			//change modal height/width and translate it
 			self.modal.css({
-				top: eventTop-150+'px',
+				top: eventTop-1200+'px',  // I have changed here!!!
 				left: eventLeft+'px',
 				height: modalHeight+'px',
 				width: modalWidth+'px',

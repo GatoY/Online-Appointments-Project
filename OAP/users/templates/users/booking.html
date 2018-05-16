@@ -54,7 +54,7 @@
                         <div class="top-info"><span>{{ i.year }}-{{ i.month }}-{{ i.day }}</span></div>
                         <ul>
                             {% for j in appointmentsList %}
-                                {% if j.getyear == i.year and j.getmonth == i.month % and j.getday == i.day}
+                                {% if j.getyear == i.year and j.getmonth == i.month and j.getday == i.day %}
                                             <li class="single-event"
                                                 data-start="{{ j.getstarthour }}:{{ j.getstartmin }}"
                                                 data-end="{{ j.getendhour }}:{{ j.getendmin }}" data-content=""
@@ -65,7 +65,6 @@
                                                 <em class="event-name">You have an appointment today.</em>
                                             </a>
                                             </li>
-                                        {% endif %}
                                     {% endif %}
                             {% endfor %}
 
