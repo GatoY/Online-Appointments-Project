@@ -19,53 +19,59 @@
 
     <div class="cd-schedule loading">
         <div class="timeline">
-
             <ul>
-                <li><span>09:00</span></li>
-                <li><span>09:30</span></li>
-                <li><span>10:00</span></li>
-                <li><span>10:30</span></li>
-                <li><span>11:00</span></li>
-                <li><span>11:30</span></li>
-                <li><span>12:00</span></li>
-                <li><span>12:30</span></li>
-                <li><span>13:00</span></li>
-                <li><span>13:30</span></li>
-                <li><span>14:00</span></li>
-                <li><span>14:30</span></li>
-                <li><span>15:00</span></li>
-                <li><span>15:30</span></li>
-                <li><span>16:00</span></li>
-                <li><span>16:30</span></li>
-                <li><span>17:00</span></li>
-                <li><span>17:30</span></li>
-                <li><span>18:00</span></li>
+                {% for i in week %}
+
+                    <li><span>09:00</span></li>
+                    <li><span>09:30</span></li>
+                    <li><span>10:00</span></li>
+                    <li><span>10:30</span></li>
+                    <li><span>11:00</span></li>
+                    <li><span>11:30</span></li>
+                    <li><span>12:00</span></li>
+                    <li><span>12:30</span></li>
+                    <li><span>13:00</span></li>
+                    <li><span>13:30</span></li>
+                    <li><span>14:00</span></li>
+                    <li><span>14:30</span></li>
+                    <li><span>15:00</span></li>
+                    <li><span>15:30</span></li>
+                    <li><span>16:00</span></li>
+                    <li><span>16:30</span></li>
+                    <li><span>17:00</span></li>
+                    <li><span>17:30</span></li>
+                    <li><span>18:00</span></li>
+
+                {% endfor %}
             </ul>
         </div> <!-- .timeline -->
 
-         <div class="events">
+        <div class="events">
+
             <ul>
                 {% for i in datelist %}
-                <li class="events-group">
-                    <div class="top-info", id={{ i }}><span>{{ i }}</span></div>
-                    <ul>
-                    </ul>
-                </li>
+
+                    <li class="events-group">
+                        <div class="top-info" id={{ i }}><span>{{ i }}</span></div>
+                        <ul>
+                        </ul>
+                    </li>
                 {% endfor %}
-            <!--
-            <li class="events-group">
-                    <div class="top-info"><span>Thursday</span></div>
-                    <ul>
-                        <li class="single-event" data-start="15:30" data-end="18:30" data-content="" event-booked
-                        ""
-                        data-event="event-1">
-                        <a href="#0">
-                            <em class="event-name">You have an appointment today.</em>
-                        </a>
-                        </li>
-                    </ul>
-                </li>
-            -->
+                {% for i in appointmentsList %}
+                    <li class="events-group">
+                        <div class="top-info"><span>Thursday</span></div>
+                        <ul>
+                            <li class="single-event" data-start="{{ i.getstarthour }}"+":"+"{{ i.getstartmin }}" data-end="18:30" data-content="" event-booked
+                            ""
+                            data-event="event-1">
+                            <a href="#0">
+                                <em class="event-name">You have an appointment today.</em>
+                            </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{ i.starttime }}
+                {% endfor %}
             </ul>
         </div>
 

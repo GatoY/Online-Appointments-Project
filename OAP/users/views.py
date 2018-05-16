@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm, InfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
+from django.utils import timezone
 from .models import userInfo, Dog, Appointments
 import time
 
 WEEK = 3
 YEAR = 2018
-
+now = timezone.now()
 
 def home(request):
     return render(request, 'users/home.html')
@@ -82,9 +83,10 @@ def generateDatelist(startDate, WEEK):
     month = int(startDate[:2])
     day = int(startDate[3:5]) - 1
     for i in range(0, 5 * WEEK):
+        # print(1)
         day = day + 1
         if day < 29:
-            continue
+            pass
         elif day == 29 and month == 2:
             month = 3
             day = 1
@@ -94,20 +96,30 @@ def generateDatelist(startDate, WEEK):
             else:
                 month = month + 1
             day = 1
-        else:
+        elif day == 32:
             month = month + 1
             day = 1
-        datelist.append(str(day) + '-' + str(month) + '-' + str(YEAR))
+        else:
+            pass
+        addDate = str(day) + '-' + str(month) + '-' + str(YEAR)
+        # print(addDate)
+        datelist.append(addDate)
     return datelist
+
 
 def booking(request):
     tmp = time.localtime()
     date = time.strftime('%m-%d', tmp)
+    # print('start '+ date)
     datelist = generateDatelist(date, WEEK)
-    weekday = time.strftime('%w', tmp)
-    appointmentsList = Appointments.objects.filter(endtime__level__gte = tmp)
-    context = {'appointmentsList': appointmentsList, 'weekday': weekday, 'datelist': datelist}
+    # for i in datelist:
+    #     print(i)
+    # weekday = time.strftime('%w', tmp)
+    appointmentsList = Appointments.objects.filter(endtime__gte=now)
+    week = [0] * WEEK
+    context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
     return render(request, 'users/booking.html', context)
+
 
 def bookavailable(request):
     return render(request, 'users/event-available.html')

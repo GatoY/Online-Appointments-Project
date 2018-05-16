@@ -25,6 +25,8 @@ class Dog(models.Model):
     breed = models.CharField(max_length=50)
     dob = models.DateTimeField('date of birth')
     owner = models.ForeignKey('User', on_delete=models.CASCADE)
+
+
 # Create your models here.
 
 # class TimeSchedule(models.Model):
@@ -33,7 +35,19 @@ class Dog(models.Model):
 class Appointments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     dog = models.ForeignKey(Dog, on_delete=models.CASCADE)
-    msg = models.CharField(max_length=140, default=' ', blank =True, null=True)
-    starttime = models.DateTimeField()  #y-m-d-h-m-s
+    msg = models.CharField(max_length=140, default=' ', blank=True, null=True)
+    starttime = models.DateTimeField()  # y-m-d-h-m-s
     endtime = models.DateTimeField()
-    weekday = models.IntegerField() #0-6
+
+    def getstarthour(self):
+        return self.starttime.hour
+
+    def getstartmin(self):
+        return self.starttime.minute
+
+    def getendhour(self):
+        return self.endtime.hour
+
+    def getendmin(self):
+        return self.endtime.minute
+    # weekday = models.IntegerField() #0-6
