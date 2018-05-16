@@ -25,9 +25,19 @@ class InfoForm(forms.ModelForm):
     # error_message="Home number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
     class Meta:
         model = userInfo
-        fields = ['address','mobile', 'workPhone', 'home']
+        fields = ['address', 'mobile', 'workPhone', 'home']
 
+'''
 class BookForm(forms.ModelForm):
     class Meta:
         model = Appointments
         fields = ['msg']
+'''
+
+class MakeAppointments(forms.ModelForm):
+    class Meta:
+        model = Appointments
+        widgets = {'starttime': forms.DateInput(attrs={'class': 'datepicker'}),
+                   'endtime': forms.DateInput(attrs={'class': 'datepicker'})
+                   }
+        fields = []

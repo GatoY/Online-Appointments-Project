@@ -120,7 +120,7 @@ def generateDatelist(startDate, WEEK):
     return datelist
 
 
-def booking(request):
+def availbleschedule(request):
     tmp = time.localtime()
     date = time.strftime('%m-%d', tmp)
     # print('start '+ date)
@@ -131,8 +131,10 @@ def booking(request):
     appointmentsList = Appointments.objects.filter(endtime__gte=now)
     week = [0] * WEEK
     context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
-    return render(request, 'users/booking.html', context)
+    return render(request, 'users/availbleschedule.html', context)
 
+def booking(request):
+    return render(request, 'users/booking.html')
 
 def bookavailable(request):
     return render(request, 'users/event-available.html')
