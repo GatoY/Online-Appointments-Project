@@ -10,6 +10,7 @@ WEEK = 3
 YEAR = 2018
 now = timezone.now()
 
+
 def home(request):
     return render(request, 'users/home.html')
 
@@ -77,6 +78,17 @@ def mybook(request):
     return render(request, 'users/mybook.html')
 
 
+class datelist_detail():
+    year = 0
+    month = 0
+    day = 0
+
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+
+
 def generateDatelist(startDate, WEEK):
     datelist = []
     # datelist.append(startDate)
@@ -101,9 +113,10 @@ def generateDatelist(startDate, WEEK):
             day = 1
         else:
             pass
-        addDate = str(day) + '-' + str(month) + '-' + str(YEAR)
+        tmp = datelist_detail(YEAR, month, day)
+        # addDate = str(day) + '-' + str(month) + '-' + str(YEAR)
         # print(addDate)
-        datelist.append(addDate)
+        datelist.append(tmp)
     return datelist
 
 

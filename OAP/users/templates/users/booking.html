@@ -50,28 +50,29 @@
 
             <ul>
                 {% for i in datelist %}
+                    <li class="events-group">
+                        <div class="top-info"><span>{{ i.year }}-{{ i.month }}-{{ i.day }}</span></div>
+                        <ul>
+                            {% for j in appointmentsList %}
+                                {% if j.getyear == i.year and j.getmonth == i.month % and j.getday == i.day}
+                                            <li class="single-event"
+                                                data-start="{{ j.getstarthour }}:{{ j.getstartmin }}"
+                                                data-end="{{ j.getendhour }}:{{ j.getendmin }}" data-content=""
+                                                event-booked
+                                            ""
+                                            data-event="event-1">
+                                            <a href="#0">
+                                                <em class="event-name">You have an appointment today.</em>
+                                            </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                            {% endfor %}
 
-                    <li class="events-group">
-                        <div class="top-info" id={{ i }}><span>{{ i }}</span></div>
-                        <ul>
                         </ul>
                     </li>
                 {% endfor %}
-                {% for i in appointmentsList %}
-                    <li class="events-group">
-                        <div class="top-info"><span>Thursday</span></div>
-                        <ul>
-                            <li class="single-event" data-start="{{ i.getstarthour }}"+":"+"{{ i.getstartmin }}" data-end="18:30" data-content="" event-booked
-                            ""
-                            data-event="event-1">
-                            <a href="#0">
-                                <em class="event-name">You have an appointment today.</em>
-                            </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {{ i.starttime }}
-                {% endfor %}
+
             </ul>
         </div>
 

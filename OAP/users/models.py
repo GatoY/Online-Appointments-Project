@@ -39,15 +39,30 @@ class Appointments(models.Model):
     starttime = models.DateTimeField()  # y-m-d-h-m-s
     endtime = models.DateTimeField()
 
+    def getyear(self):
+        return self.starttime.year
+
+    def getmonth(self):
+        return self.starttime.month
+
+    def getday(self):
+        return self.starttime.day
+
     def getstarthour(self):
         return self.starttime.hour
 
     def getstartmin(self):
-        return self.starttime.minute
+        min = self.starttime.minute
+        if int(min) < 10:
+            min = '0' + str(min)
+        return min
 
     def getendhour(self):
         return self.endtime.hour
 
     def getendmin(self):
-        return self.endtime.minute
+        min = self.endtime.minute
+        if int(min) < 10:
+            min = "0" + str(min)
+        return min
     # weekday = models.IntegerField() #0-6
