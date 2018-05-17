@@ -6,7 +6,7 @@
     {% if flag %}
     <p class="text-success">Edit Successfully!</p>
     {% endif %}
-    <form action="{% url 'users:doginfo' %}" method="post">
+    <form action="{% url 'users:editdoginfo' id %}" method="post">
     {% csrf_token %}
         <div class="row">
             <div class="col-md-3"></div>

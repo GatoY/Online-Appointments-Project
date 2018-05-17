@@ -57,24 +57,27 @@ def petslist(request):
 def editdoginfo(request, dogid):
     current_user = request.user
     dog = Dog.objects.get(owner=current_user, id=dogid)
+    print(dog.dob)
+
     if request.method == 'POST':
         dog.owner = current_user
         name = request.POST.get('name')
-        if name is not None:
+        if name is not None and name != '':
             dog.name = name
         print(dog.name)
         breed = request.POST.get('breed')
-        if breed is not None:
+        if breed is not None and name != '':
             dog.breed = breed
         dob = request.POST.get('dob')
-        if dob is not None:
+        if dob is not None and dob != '':
             dog.dob = dob
+        print(dog.dob)
         dog.save()
 
-        return redirect('../../users/petslist')
+        return redirect('../../petslist')
 
     return render(request, 'users/editdoginfo.html', context={
-        'flag': 1,
+        'id':dogid,
         'name': dog.name,
         'breed': dog.breed,
         'dob': dog.dob})
