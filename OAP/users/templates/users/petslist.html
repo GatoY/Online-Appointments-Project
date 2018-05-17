@@ -1,0 +1,39 @@
+﻿{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if petslist %}
+        <h2>Select the pet info u wanna edit.</h2>
+
+
+        {% for pet in petslist %}
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group shadow-textarea">
+                        <label for="address">Name:</label>
+                        <input class="form-control" name="name" type="text" placeholder="{{ pet.name }}" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-4">
+                    <a href="{%  %} url 'users/doginfo' %}" <button type="button" class="btn btn-primary" value="submit">Edit</button>
+                    {#        <input type="submit" value="submit"/>#}
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+        {% endfor %}
+    {% else %}
+        <h2>Please add ur pets first.</h2>
+    {% endif %}
+{% endblock content %}

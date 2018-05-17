@@ -29,6 +29,7 @@ urlpatterns = [
     path('home/', views.home, name ='home'),
     path('info/', views.info, name ='info'),
     path('doginfo/', views.doginfo, name ='doginfo'),
+    path('petslist/', views.petslist, name ='petslist'),
     # path('schedule/', views.schedule, name ='schedule'),
     path('mybook/', views.mybook, name ='mybook'),
     path('booking/', views.booking, name ='booking'),

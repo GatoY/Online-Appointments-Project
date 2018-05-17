@@ -19,7 +19,10 @@ def home(request):
 @csrf_protect
 def info(request):
     current_user = request.user
-    userinfo = userInfo.objects.get(user=current_user)
+    try:
+        userinfo = userInfo.objects.get(user=current_user)
+    except:
+        userinfo = None
     if request.method == 'POST':
         if userinfo is None:
             userinfo = userInfo()
@@ -43,10 +46,18 @@ def info(request):
     else:
         return render(request, 'users/info.html')
 
+def petslist(request):
+    current_user = request.user
+    petslist = Dog.objects.filter(owner=current_user)
+    context={'petslist':petslist}
+    return render(request, 'users/petslist.html', context)
 
 def doginfo(request):
     current_user = request.user
-    dog = Dog.objects.get(owner=current_user)
+    try:
+        dog = Dog.objects.get(owner=current_user)
+    except:
+        dog = None
     if request.method == 'POST':
         if dog is None:
             dog = Dog()
@@ -62,6 +73,8 @@ def doginfo(request):
             'dob': dog.dob})
 
     if dog is not None:
+        print(dog.dob)
+        print(dog.name)
         return render(request, 'users/doginfo.html', context={'name': dog.name,
                                                               'breed': dog.breed,
                                                               'dob': dog.dob})
