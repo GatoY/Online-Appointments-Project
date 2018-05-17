@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
 from .models import userInfo, Dog, Appointments
 import time
+import re
 
 WEEK = 3
 YEAR = 2018
@@ -134,6 +135,24 @@ def availbleschedule(request):
     return render(request, 'users/availbleschedule.html', context)
 
 
+def format_datetime(datetime):
+    year = datetime[6:10]
+    month = datetime[0:2]
+    day = datetime[3:5]
+    pattern_hour = re.compile(r'\s(.+):')
+    hour = pattern_hour.search(datetime).group(1)
+    pattern_min = re.compile(r':(.+)\s')
+    min = pattern_min.search(datetime).group(1)
+    ampm = datetime[-2:]
+    if ampm == 'PM':
+        hour = int(hour) + 12
+    if int(hour) < 10:
+        hour = '0' + str(hour)
+    # if int(min)<10:
+    #     min = '0'+str(min)
+    value=str(year)+'-'+str(month)+'-'+str(day)+' '+str(hour)+':'+str(min)
+    return value
+
 def booking(request):
     current_user = request.user
     dog_list = Dog.objects.filter(owner=current_user)
@@ -158,15 +177,15 @@ def booking(request):
 
         appointment.dog = thedog
         appointment.msg = request.POST.get('msg')
-        appointment.starttime = request.POST.get('starttime')
-        appointment.endtime = request.POST.get('endtime')
+        appointment.starttime = format_datetime(request.POST.get('starttime'))
+        appointment.endtime = format_datetime(request.POST.get('endtime'))
         print('1')
         thedog.save()
         appointment.save()
         return redirect('/users/bookSuccess')
         # return redirect('../../users/home')
         # form = MakeAppointmentsForm()
-# return render(request, 'users/login.html', context={'form': form})
+    # return render(request, 'users/login.html', context={'form': form})
     return render(request, 'users/booking.html', context={'dog_list': dog_list})
 
 
