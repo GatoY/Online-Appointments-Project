@@ -11,7 +11,9 @@
 
     <!--bootstrap-->
     <link href="{% static 'users/css/bootstrap.min.css' %}" rel="stylesheet"/>
-    <script src="{% static 'users/js/bootstrap/bootstrap.min.js' %}"></script>
+    {#    <script src="{% static 'users/js/bootstrap/bootstrap.min.js' %}"></script>#}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <!--[if lt IE 9]>
       <script src="js/bootstrap/html5shiv.min.js"></script>
       <script src="js/bootstrap/respond.min.js"></script>
@@ -86,7 +88,8 @@
                 <ul class="sub-menu">
                     <li><a href="{% url 'users:mybook' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Appointments</a>
                     </li>
-                    <li><a href="{% url 'users:availbleschedule' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Available Schedule</a></li>
+                    <li><a href="{% url 'users:availbleschedule' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Available
+                        Schedule</a></li>
                     <li><a href="{% url 'users:booking' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Book</a></li>
                 </ul>
             </li>

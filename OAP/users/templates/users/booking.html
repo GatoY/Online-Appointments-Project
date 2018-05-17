@@ -16,6 +16,13 @@
         });
     </script>
     -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+
+    <link href="{% static 'users/css/bootstrap-datetimepicker.css' %}" rel="stylesheet">
+    {#    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>#}
+    <script src="{% static 'users/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+
 
     .shadow-textarea textarea.form-control::placeholder {
     font-weight: 300;
@@ -55,17 +62,45 @@
             </div>
         </div>
 
-
+        <br>
         <div class="control-group">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-3">
-                    <label class="control-label">DateTime Picking</label></div>
+                    <label class="control-label">StartTime Picking</label>
+                </div>
                 <div class="col-md-5">
-                    <input id="basic" name="basic" value="2018-05-19">
+                    <div class="input-group date" id="starttime">
+                        <input type="text" class="form-control"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                    <script>$('#starttime').datetimepicker();</script>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
 
-                    <script>$('#basic').datetator();</script>
-
+        <br>
+        <br>
+    
+        <div class="control-group">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <label class="control-label">EndTime Picking</label>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group date" id="endtime">
+                        <input type="text" class="form-control"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                    </div>
+                    <script>$('#endtime').datetimepicker();</script>
                 </div>
                 <div class="col-md-2"></div>
             </div>
