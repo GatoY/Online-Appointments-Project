@@ -52,29 +52,48 @@ def petslist(request):
     context={'petslist':petslist}
     return render(request, 'users/petslist.html', context)
 
+def editdoginfo(request, dogid):
+    current_user = request.user
+    dog = Dog.objects.get(owner=current_user, id=dogid)
+    if request.method == 'POST':
+        dog.owner = current_user
+        name = request.POST.get('name')
+        if name is not None:
+            dog.name = name
+
+        breed = request.POST.get('breed')
+        if breed is not None:
+            dog.breed = breed
+        dob = request.POST.get('dob')
+        if dob is not None:
+            dog.dob = dob
+        dog.save()
+        return render(request, 'users/editdoginfo.html', context={
+            'flag': 1,
+            'name': dog.name,
+            'breed': dog.breed,
+            'dob': dog.dob})
+
+    return render(request, 'users/doginfo.html', context={'name': dog.name,
+                                                              'breed': dog.breed,
+                                                              'dob': dog.dob})
+
 def doginfo(request):
     current_user = request.user
-    try:
-        dog = Dog.objects.get(owner=current_user)
-    except:
-        dog = None
     if request.method == 'POST':
-        if dog is None:
-            dog = Dog()
+        dog = Dog()
         dog.owner = current_user
         dog.name = request.POST.get('name')
         dog.breed = request.POST.get('breed')
         dog.dob = request.POST.get('dob')
         dog.save()
-        return render(request, 'users/doginfo.html', context={
+        return render(request, 'users/editdoginfo.html', context={
             'flag': 1,
             'name': dog.name,
             'breed': dog.breed,
             'dob': dog.dob})
 
     if dog is not None:
-        print(dog.dob)
-        print(dog.name)
         return render(request, 'users/doginfo.html', context={'name': dog.name,
                                                               'breed': dog.breed,
                                                               'dob': dog.dob})
@@ -85,14 +104,10 @@ def doginfo(request):
 @csrf_protect
 def userLogin(request):
     if request.method == 'POST':
-        print(2)
         form = LoginForm(request.POST)
-        print(3)
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        print(4)
         user = authenticate(request, username=username, password=password)
-        print(5)
         if user is not None:
             if user.is_active:
                 login(request, user)

@@ -24,8 +24,8 @@
       <file leaf-file-name="doginfo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/templates/users/doginfo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
+            <state relative-caret-position="169">
+              <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -53,21 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="availbleschedule.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/users/templates/users/availbleschedule.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+            <state relative-caret-position="506">
+              <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -75,11 +65,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="editdoginfo.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/users/templates/users/editdoginfo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-359">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="petslist.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/templates/users/petslist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="120">
+              <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -98,10 +98,10 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="74" column="17" lean-forward="true" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+            <state relative-caret-position="339">
+              <caret line="63" column="64" lean-forward="false" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
               <folding>
-                <element signature="e#5004#5010#0#HTML" expanded="true" />
+                <element signature="e#5088#5094#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,8 +110,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="30" column="53" lean-forward="true" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+            <state relative-caret-position="420">
+              <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -148,9 +148,9 @@
       <find>bootstrap.min.js</find>
       <find>bookSuccess</find>
       <find>booksucess</find>
-      <find>book</find>
       <find>schedule</find>
       <find>dog</find>
+      <find>book</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/users/static</dir>
@@ -178,14 +178,14 @@
         <option value="$PROJECT_DIR$/users/static/users/js/bootstrap.colorpicker/bootstrap-colorpicker.min.js" />
         <option value="$PROJECT_DIR$/users/static/users/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/users/templates/users/bookSuccess.html" />
-        <option value="$PROJECT_DIR$/users/templates/users/base.html" />
         <option value="$PROJECT_DIR$/users/templates/users/mybook.html" />
         <option value="$PROJECT_DIR$/users/templates/users/booking.html" />
         <option value="$PROJECT_DIR$/users/templates/users/info.html" />
         <option value="$PROJECT_DIR$/users/models.py" />
         <option value="$PROJECT_DIR$/users/templates/users/doginfo.html" />
-        <option value="$PROJECT_DIR$/users/urls.py" />
+        <option value="$PROJECT_DIR$/users/templates/users/base.html" />
         <option value="$PROJECT_DIR$/users/templates/users/petslist.html" />
+        <option value="$PROJECT_DIR$/users/urls.py" />
         <option value="$PROJECT_DIR$/users/views.py" />
       </list>
     </option>
@@ -391,13 +391,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/users/templates/users/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/users/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -625,16 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="74" column="17" lean-forward="true" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-          <folding>
-            <element signature="e#5004#5010#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/users/availbleschedule.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -669,22 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="30" column="53" lean-forward="true" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/templates/users/doginfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/users/booking.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -693,21 +660,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="63" column="64" lean-forward="false" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
+          <folding>
+            <element signature="e#5088#5094#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/users/petslist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/doginfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
+        <state relative-caret-position="506">
+          <caret line="85" column="43" lean-forward="true" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/editdoginfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-359">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
