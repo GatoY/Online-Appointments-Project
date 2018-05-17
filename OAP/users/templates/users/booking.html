@@ -2,22 +2,26 @@
 {% load static %}
 
 {% block header %}
+    <!--
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css"/>
-    <script>
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}"/>
+    -->
+
+    <!--<script>
         $(function () {
             $("#id_starttime").datepicker();
             $("#id_endtime").datepicker();
         });
     </script>
-
+    -->
 
     <link href="{% static 'users/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet" media="screen">
     <script type="text/javascript" src="{% static 'users/js/jquery-1.8.3.min.js' %}" charset="UTF-8"></script>
     <script type="text/javascript" src="{% static 'users/js/bootstrap-datetimepicker.js' %}" charset="UTF-8"></script>
-    <script type="text/javascript" src="{% static 'users/js/locales/bootstrap-datetimepicker.fr.js' %}" charset="UTF-8"></script>
+    <script type="text/javascript" src="{% static 'users/js/bootstrap-datetimepicker.fr.js' %}"
+            charset="UTF-8"></script>
     <script type="text/javascript">
         $('.form_datetime').datetimepicker({
             //language:  'fr',
@@ -28,27 +32,6 @@
             startView: 2,
             forceParse: 0,
             showMeridian: 1
-        });
-        $('.form_date').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-        $('.form_time').datetimepicker({
-            language: 'fr',
-            weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 1,
-            minView: 0,
-            maxView: 1,
-            forceParse: 0
         });
     </script>
 
@@ -72,6 +55,8 @@
         <br>
         <br>
 
+
+
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2"></div>
@@ -89,6 +74,25 @@
             </div>
         </div>
 
+
+            <div class="control-group">
+                 <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <label class="control-label">DateTime Picking</label></div>
+                <div class="col-md-5">
+                    <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z"
+                         data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                        <input size="16" type="text" value="" readonly>
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                    <input type="hidden" id="dtp_input1" value=""/><br/>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+<!--
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-3"><label>Start Time: </label></div>
@@ -108,7 +112,7 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-
+-->
         <br>
         <br>
 
