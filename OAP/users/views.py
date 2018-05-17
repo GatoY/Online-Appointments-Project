@@ -11,7 +11,7 @@ WEEK = 3
 YEAR = 2018
 now = timezone.now()
 
-
+#TODO email
 def home(request):
     return render(request, 'users/home.html')
 
