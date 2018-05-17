@@ -26,12 +26,24 @@
     <div class="row">
         <div class="col-sm-2">
         </div>
-        <label class="col-sm-4">When: </label>
+        <label class="col-sm-4">Start at: </label>
         <div class="col-sm-4">
-            4th May
+            {{ starttime }}
         </div>
         <div class="col-sm-2"></div>
     </div>
+    </br>
+    </br>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <label class="col-sm-4">To: </label>
+        <div class="col-sm-4">
+            {{ endtime }}
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
     </br>
     </br>
 
@@ -40,8 +52,7 @@
         </div>
         <label for="msg" class="col-sm-4 col-form-label ">Message to the groomer</label>
         <div class="col-sm-4">
-
-                    Please take some snacks for her. Thanks.
+            {{ msg }}
         </div>
         <div class="col-sm-2">
         </div>
@@ -49,12 +60,15 @@
     </br>
     </br>
     <div class="form-group row">
-        <div class="col-sm-5"></div>
+        <div class="col-sm-4"></div>
         <div class="col-sm-2">
-            <button type="button" class="btn btn-success">OK</button>
+            <a href="{% url 'users:booking' %}"><button type="button" class="btn btn-info"> Booking More</button></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="{% url 'users:mybook' %}"><button type="button" class="btn btn-success">My Appointments</button></a>
         </div>
 
-        <div class="col-sm-5"></div>
+        <div class="col-sm-4"></div>
 
     </div>
 

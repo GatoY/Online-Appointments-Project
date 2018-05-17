@@ -23,7 +23,7 @@ class userInfo(models.Model):
 class Dog(models.Model):
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
-    dob = models.DateTimeField('date of birth')
+    dob = models.DateField('date of birth')
     owner = models.ForeignKey('User', on_delete=models.CASCADE)
 
 
@@ -38,7 +38,7 @@ class Appointments(models.Model):
     msg = models.CharField(max_length=140, default=' ', blank=True, null=True)
     starttime = models.DateTimeField()  # y-m-d-h-m-s
     endtime = models.DateTimeField()
-
+    groomingoptions = models.CharField(max_length=40)
     def getyear(self):
         return self.starttime.year
 

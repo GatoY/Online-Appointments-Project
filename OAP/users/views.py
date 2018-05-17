@@ -18,19 +18,55 @@ def home(request):
 
 @csrf_protect
 def info(request):
+    current_user = request.user
+    userinfo = userInfo.objects.get(user=current_user)
     if request.method == 'POST':
-        form = InfoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('../../users/home')
+        if userinfo is None:
+            userinfo = userInfo()
+        userinfo.user = current_user
+        userinfo.address = request.POST.get('address')
+        userinfo.mobile = request.POST.get('mobile')
+        userinfo.workPhone = request.POST.get('workPhone')
+        userinfo.home = request.POST.get('home')
+        userinfo.save()
+        return render(request, 'users/info.html', context={
+            'flag': 1,
+            'address': userinfo.address,
+            'mobile': userinfo.mobile,
+            'workPhone': userinfo.workPhone,
+            'home': userinfo.home})
+    if userinfo is not None:
+        return render(request, 'users/info.html', context={'address': userinfo.address,
+                                                           'mobile': userinfo.mobile,
+                                                           'workPhone': userinfo.workPhone,
+                                                           'home': userinfo.home})
     else:
-        form = InfoForm()
-        print(1)
-    return render(request, 'users/info.html', context={'form': form})
+        return render(request, 'users/info.html')
 
 
 def doginfo(request):
-    return render(request, 'users/doginfo.html')
+    current_user = request.user
+    dog = Dog.objects.get(owner=current_user)
+    if request.method == 'POST':
+        if dog is None:
+            dog = Dog()
+        dog.owner = current_user
+        dog.name = request.POST.get('name')
+        dog.breed = request.POST.get('breed')
+        dog.dob = request.POST.get('dob')
+        dog.save()
+        return render(request, 'users/doginfo.html', context={
+            'flag': 1,
+            'name': dog.name,
+            'breed': dog.breed,
+            'dob': dog.dob})
+
+    if dog is not None:
+        return render(request, 'users/doginfo.html', context={'name': dog.name,
+                                                              'breed': dog.breed,
+                                                              'dob': dog.dob})
+    else:
+        return render(request, 'users/doginfo.html')
 
 
 @csrf_protect
@@ -71,12 +107,19 @@ def register(request):
     return render(request, 'users/register.html', context={'form': form})
 
 
-def schedule(request):
-    return render(request, 'users/schedule.html')
+# def schedule(request):
+#     return render(request, 'users/schedule.html')
 
 
 def mybook(request):
-    return render(request, 'users/mybook.html')
+    tmp = time.localtime()
+    date = time.strftime('%m-%d', tmp)
+    datelist = generateDatelist(date, WEEK)
+    current_user = request.user
+    appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
+    week = [0] * WEEK
+    context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
+    return render(request, 'users/mybook.html', context)
 
 
 class datelist_detail():
@@ -150,8 +193,9 @@ def format_datetime(datetime):
         hour = '0' + str(hour)
     # if int(min)<10:
     #     min = '0'+str(min)
-    value=str(year)+'-'+str(month)+'-'+str(day)+' '+str(hour)+':'+str(min)
+    value = str(year) + '-' + str(month) + '-' + str(day) + ' ' + str(hour) + ':' + str(min)
     return value
+
 
 def booking(request):
     current_user = request.user
@@ -182,7 +226,10 @@ def booking(request):
         print('1')
         thedog.save()
         appointment.save()
-        return redirect('/users/bookSuccess')
+        return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
+                                                                  'starttime': appointment.starttime,
+                                                                  'endtime': appointment.starttime,
+                                                                  'msg': appointment.msg})
         # return redirect('../../users/home')
         # form = MakeAppointmentsForm()
     # return render(request, 'users/login.html', context={'form': form})
@@ -200,7 +247,6 @@ def bookbooked(request):
 def bookDetail(request):
     return render(request, 'users/bookDetail.html')
 
-
-def bookSuccess(request):
-    return render(request, 'users/bookSuccess.html')
+# def bookSuccess(request):
+# return render(request, 'users/bookSuccess.html')
 # Create your views here.

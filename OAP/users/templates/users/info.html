@@ -3,45 +3,77 @@
 
 {% block content %}
     <h2>Personal Info</h2>
+    {% if flag %}
+    <p class="text-success">Edit Successfully!</p>
+    {% endif %}
+    <form action="{% url 'users:info' %}" method="post">
     {% csrf_token %}
-    <form action="{% url 'users:info' %}">
-        <br>
-        <br>
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4">
-                        {{ field.label_tag }}
-                    </div>
-                    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group shadow-textarea">
+                    <label for="address">Home Address:</label>
+                    <input class="form-control" name="address" type="text" placeholder="{{ address }}">
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
 
-                        {{ field }}
-                        {{ field.errors }}
-                        {% if field.help_text %}
-                            <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
-                        {% endif %}
-                    </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group shadow-textarea">
+                    <label for="address">Mobile:</label>
+                    <input class="form-control" name="mobile" type="number" placeholder="{{ mobile }}">
 
                 </div>
             </div>
-            <br>
-            <br>
-            <br>
-        {% endfor %}
-    <br>
-    <br>
-        <div class="row">
-            <div class=" col-md-4">
-            </div>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-            <div class="col-md-4">
-            </div>
-
+            <div class="col-md-3"></div>
         </div>
+
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group shadow-textarea">
+                    <label for="address">Work Phone:</label>
+                    <input class="form-control" name="workPhone" type="number" placeholder="{{ workPhone }}">
+
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group shadow-textarea">
+                    <label for="address">Home(Phone):</label>
+                    <input class="form-control" name="home" type="number" placeholder="{{ home }}">
+
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                {#        <input type="submit" value="submit"/>#}
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+
+
     </form>
 
 {% endblock content %}
