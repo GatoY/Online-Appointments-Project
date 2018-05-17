@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, LoginForm, InfoForm, MakeAppointmentsForm
+from .forms import RegisterForm, LoginForm, InfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
@@ -136,19 +136,38 @@ def availbleschedule(request):
 
 def booking(request):
     current_user = request.user
-    dog_list = Dog.objects.filter(owner = current_user)
+    dog_list = Dog.objects.filter(owner=current_user)
     if request.method == 'POST':
-        print(2)
-        form = MakeAppointmentsForm(request.POST)
-        print(3)
-        if form.is_valid():
-            form.save()
-            return redirect('/users/bookSuccess')
-            # return redirect('../../users/home')
-    else:
-        form = MakeAppointmentsForm()
-    # return render(request, 'users/login.html', context={'form': form})
-    return render(request, 'users/booking.html', context={'form': form, 'dog_list':dog_list})
+        # print(2)
+
+        # form = MakeAppointmentsForm(request.POST)
+        # print(3)
+        # print(request.POST.get('dog', ''))
+        # print(form)
+        # if form.is_valid():
+        appointment = Appointments()
+        appointment.user = current_user
+        # print(current_user)
+        # print(form.cleaned_data.get('starttime'))
+        dogname = request.POST.get('dog')
+        # print(form.cleaned_data['dog'])
+        # print(dogname)
+        thedog = Dog.objects.get(name=dogname, owner=current_user)
+        print(thedog.breed)
+        thedog.save()
+
+        appointment.dog = thedog
+        appointment.msg = request.POST.get('msg')
+        appointment.starttime = request.POST.get('starttime')
+        appointment.endtime = request.POST.get('endtime')
+        print('1')
+        thedog.save()
+        appointment.save()
+        return redirect('/users/bookSuccess')
+        # return redirect('../../users/home')
+        # form = MakeAppointmentsForm()
+# return render(request, 'users/login.html', context={'form': form})
+    return render(request, 'users/booking.html', context={'dog_list': dog_list})
 
 
 def bookavailable(request):
