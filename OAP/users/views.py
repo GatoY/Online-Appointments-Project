@@ -135,6 +135,8 @@ def availbleschedule(request):
 
 
 def booking(request):
+    current_user = request.user
+    dog_list = Dog.objects.filter(owner = current_user)
     if request.method == 'POST':
         print(2)
         form = MakeAppointmentsForm(request.POST)
@@ -146,7 +148,7 @@ def booking(request):
     else:
         form = MakeAppointmentsForm()
     # return render(request, 'users/login.html', context={'form': form})
-    return render(request, 'users/booking.html', context={'form': form})
+    return render(request, 'users/booking.html', context={'form': form, 'dog_list':dog_list})
 
 
 def bookavailable(request):

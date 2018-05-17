@@ -12,6 +12,14 @@
             $("#id_endtime").datepicker();
         });
     </script>
+
+    .shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+    }
+    .shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+    }
+
 {% endblock %}
 {% block content %}
     <form action="{% url 'users:booking' %}" method="post">
@@ -24,6 +32,24 @@
         <h2>Appointments Form</h2>
         <br>
         <br>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
+                    <label for="sel1">Select ur dog:</label>
+                </div>
+                <div class="col-md-5">
+                    <select class="form-control" id="id_dog">
+                        {% for dog in dog_list %}
+                            <option>{{ dog.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-3"><label>Start Time: </label></div>
@@ -46,6 +72,21 @@
 
         <br>
         <br>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="form-group shadow-textarea">
+                    <label for="id_msg">Leave a message for groomer:</label>
+                    <textarea class="form-control z-depth-1" id="id_msg" rows="3"
+                              placeholder="Write something here..."></textarea>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <br>
+        <br>
         <br>
         <div class="row">
             <div class="col-md-4"></div>
@@ -55,6 +96,8 @@
                 <div class="col-md-4"></div>
             </div>
         </div>
+
+
     </form>
 {% endblock content %}
 <!-- The rest of my form -->
