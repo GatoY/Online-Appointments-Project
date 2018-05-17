@@ -92,11 +92,6 @@ def doginfo(request):
             'name': dog.name,
             'breed': dog.breed,
             'dob': dog.dob})
-
-    if dog is not None:
-        return render(request, 'users/doginfo.html', context={'name': dog.name,
-                                                              'breed': dog.breed,
-                                                              'dob': dog.dob})
     else:
         return render(request, 'users/doginfo.html')
 
