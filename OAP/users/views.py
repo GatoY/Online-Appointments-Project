@@ -46,11 +46,13 @@ def info(request):
     else:
         return render(request, 'users/info.html')
 
+
 def petslist(request):
     current_user = request.user
     petslist = Dog.objects.filter(owner=current_user)
-    context={'petslist':petslist}
+    context = {'petslist': petslist}
     return render(request, 'users/petslist.html', context)
+
 
 def editdoginfo(request, dogid):
     current_user = request.user
@@ -60,7 +62,7 @@ def editdoginfo(request, dogid):
         name = request.POST.get('name')
         if name is not None:
             dog.name = name
-
+        print(dog.name)
         breed = request.POST.get('breed')
         if breed is not None:
             dog.breed = breed
@@ -68,15 +70,15 @@ def editdoginfo(request, dogid):
         if dob is not None:
             dog.dob = dob
         dog.save()
-        return render(request, 'users/editdoginfo.html', context={
-            'flag': 1,
-            'name': dog.name,
-            'breed': dog.breed,
-            'dob': dog.dob})
 
-    return render(request, 'users/doginfo.html', context={'name': dog.name,
-                                                              'breed': dog.breed,
-                                                              'dob': dog.dob})
+        return redirect('../../users/petslist')
+
+    return render(request, 'users/editdoginfo.html', context={
+        'flag': 1,
+        'name': dog.name,
+        'breed': dog.breed,
+        'dob': dog.dob})
+
 
 def doginfo(request):
     current_user = request.user
@@ -87,11 +89,7 @@ def doginfo(request):
         dog.breed = request.POST.get('breed')
         dog.dob = request.POST.get('dob')
         dog.save()
-        return render(request, 'users/editdoginfo.html', context={
-            'flag': 1,
-            'name': dog.name,
-            'breed': dog.breed,
-            'dob': dog.dob})
+        return redirect('../../users/petslist')
     else:
         return render(request, 'users/doginfo.html')
 
