@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
 from .models import userInfo, Dog, Appointments
+from .mail import sendEmail
+
 import time
 import re
 
@@ -11,8 +13,55 @@ WEEK = 3
 YEAR = 2018
 now = timezone.now()
 
-#TODO email
+
+# def sendmail(toemail)
+#     print("sending email")
+#     send_mail('A reminder for your grooming appointment', 'You have an appointment within 24 hours, please check it.', 'developer@yu.com',
+#               ['toemail'], fail_silently=False)
+#     print("sent success")
+
+def sendmail():
+    now = timezone.now()
+    mth = now.month
+    hour = now.hour
+    minutes = now.min
+    second = now.second
+    if hour == 11 and minutes == 31 and second == 00:
+        print("sending email")
+        day = now.day
+
+        day = day + 1
+        if day < 29:
+            pass
+        elif day == 29 and month == 2:
+            month = 3
+            day = 1
+        elif day == 31 and month % 2 == 0:
+            if month == 12:
+               month = 1
+            else:
+                month = month + 1
+            day = 1
+        elif day == 32:
+            month = month + 1
+            day = 1
+        else:
+            pass
+        next = now
+
+        next.day = day
+        appointlist = Appointments.objects.filter(starttime__range=[now, next])
+        emaillist = []
+        for i in appointlist:
+            emaillist.append(i.user)
+        for touser in emaillist:
+            sendEmail(touser)
+
+
+# TODO email
 def home(request):
+    sendmail()
+    # sendmail('derakhy@gmail.com')
     return render(request, 'users/home.html')
 
 
@@ -77,7 +126,7 @@ def editdoginfo(request, dogid):
         return redirect('../../petslist')
 
     return render(request, 'users/editdoginfo.html', context={
-        'id':dogid,
+        'id': dogid,
         'name': dog.name,
         'breed': dog.breed,
         'dob': dog.dob})
