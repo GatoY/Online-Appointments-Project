@@ -3,11 +3,56 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <p>Welcome! You have logged in successfully</p>
+        <div class="container">
+            <h2>Tom's dog grooming</h2>
+            <br>
+            <br>
+            <br>
+            <p>We have 3 main grooming options.</p>
+            <br>
+            <br>
+
+            <p>If you want customized option, just leave a msg for us.</p>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="{% static 'users/img/wash.png' %}" alt="wash" style="width:100%">
+                        <div class="caption">
+                            <p>Only Wash.</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="{% static 'users/img/clip.png' %}" alt="clip" style="width:100%">
+                        <div class="caption">
+                            <p>Wash and Nail Clipping.</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <img src="{% static 'users/img/doggroom.png' %}" alt="Fjords" style="width:100%">
+                        <div class="caption">
+                            <p>Deluxe Grooming.</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     {% else %}
         <p>Please log in first.</p>
         <script type="text/javascript">
-            setTimeout(window.location.href = '{% url 'users:userLogin' %}',3);
+            setTimeout(window.location.href = '{% url 'users:userLogin' %}', 3);
         </script>
     {% endif %}
 {% endblock content %}
