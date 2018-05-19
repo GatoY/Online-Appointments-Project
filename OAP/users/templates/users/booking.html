@@ -33,6 +33,7 @@
 
 {% endblock %}
 {% block content %}
+    {% if dog_list %}
     <form action="{% url 'users:booking' %}" method="post">
         {% csrf_token %}
         <!--{{ form.date }} -->
@@ -183,5 +184,8 @@
             });
         </script>
     </form>
+    {% else %}
+    <h1>You haven't added your pets yet, Please add your pets.</h1>
+    {% endif %}
 {% endblock content %}
 <!-- The rest of my form -->

@@ -38,7 +38,7 @@ def sendmail():
             day = 1
         elif day == 31 and month % 2 == 0:
             if month == 12:
-               month = 1
+                month = 1
             else:
                 month = month + 1
             day = 1
@@ -174,7 +174,7 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/users/login')
+            return redirect('/users/userLogin')
     else:
         form = RegisterForm()
     return render(request, 'users/register.html', context={'form': form})
@@ -275,7 +275,6 @@ def booking(request):
     dog_list = Dog.objects.filter(owner=current_user)
     if request.method == 'POST':
         # print(2)
-
         # form = MakeAppointmentsForm(request.POST)
         # print(3)
         # print(request.POST.get('dog', ''))
@@ -289,14 +288,10 @@ def booking(request):
         # print(form.cleaned_data['dog'])
         # print(dogname)
         thedog = Dog.objects.get(name=dogname, owner=current_user)
-        print(thedog.breed)
-        thedog.save()
-
         appointment.dog = thedog
         appointment.msg = request.POST.get('msg')
         appointment.starttime = format_datetime(request.POST.get('starttime'))
         appointment.endtime = format_datetime(request.POST.get('endtime'))
-        print('1')
         thedog.save()
         appointment.save()
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
@@ -307,6 +302,29 @@ def booking(request):
         # form = MakeAppointmentsForm()
     # return render(request, 'users/login.html', context={'form': form})
     return render(request, 'users/booking.html', context={'dog_list': dog_list})
+
+
+def cancel(request):
+    current_user = request.user
+    appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
+    context = {'appointmentsList': appointmentsList}
+    return render(request, 'users/cancel.html', context)
+
+
+def cancelconfirm(request, appid):
+    current_user = request.user
+    appointment = Appointments.objects.get(id=appid, user=current_user)
+    appointment.delete()
+    appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
+    context = {'appointmentsList': appointmentsList}
+    return render(request, 'users/cancel.html', context)
+
+
+def reschedule(request):
+    current_user = request.user
+    appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
+    context = {'appointmentsList': appointmentsList}
+    return render(request, 'users/reschedule.html', context)
 
 
 def bookavailable(request):

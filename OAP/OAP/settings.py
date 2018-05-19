@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
 
 ]
 
@@ -123,6 +124,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+CRONJOBS = (
+    ('00 10 * * *','users.mail.sendEmail'),
+)
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
