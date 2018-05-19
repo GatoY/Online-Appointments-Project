@@ -194,6 +194,7 @@ def mybook(request):
     context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
     return render(request, 'users/mybook.html', context)
 
+
 def mybooklist(request):
     current_user = request.user
     appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
@@ -301,7 +302,8 @@ def booking(request):
         appointment.endtime = format_datetime(request.POST.get('endtime'))
         thedog.save()
         appointment.save()
-        sendSuccessEmail(appointment.user.username)
+        msg = 'Book for:' + dogname + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + '/n Message:' + appointment.msg
+        sendSuccessEmail(appointment.user.username, msg)
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
                                                                   'starttime': appointment.starttime,
                                                                   'endtime': appointment.starttime,
@@ -348,6 +350,7 @@ def rescheduledetail(request, appid):
         if endtime is not None:
             appointment.endtime = format_datetime(endtime)
         appointment.save()
+        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + '/n Message:' + appointment.msg
         sendSuccessEmail(appointment.user.username)
         return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
                                                                         'groom': appointment.groomingoptions,
