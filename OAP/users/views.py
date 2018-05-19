@@ -300,6 +300,7 @@ def booking(request):
         appointment.groomingoptions = request.POST.get('groom')
         appointment.starttime = format_datetime(request.POST.get('starttime'))
         appointment.endtime = format_datetime(request.POST.get('endtime'))
+
         thedog.save()
         appointment.save()
         msg = 'Book for:' + dogname + ', Option:' + appointment.groomingoptions + ', Start at:' + str(appointment.starttime) + ' To ' + str(appointment.endtime) + ' Message:' + appointment.msg
