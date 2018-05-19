@@ -306,7 +306,7 @@ def booking(request):
         sendSuccessEmail(appointment.user.username, msg)
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
                                                                   'starttime': appointment.starttime,
-                                                                  'endtime': appointment.starttime,
+                                                                  'endtime': appointment.endtime,
                                                                   'groom': appointment.groomingoptions,
                                                                   'msg': appointment.msg})
         # return redirect('../../users/home')
@@ -344,14 +344,16 @@ def rescheduledetail(request, appid):
         appointment.msg = request.POST.get('msg')
         appointment.groomingoptions = request.POST.get('groom')
         starttime = request.POST.get('starttime')
-        if starttime is not None:
-            appointment.starttime = format_datetime(starttime)
-        endtime = request.POST.get('endtime')
-        if endtime is not None:
-            appointment.endtime = format_datetime(endtime)
+        appointment.starttime = format_datetime(starttime)
+        starttime = request.POST.get('endtime')
+        endtime = format_datetime('endtime')
+        if starttime is not None and starttime != '':
+            appointment.starttime = starttime
+        if endtime is not None and endtime != '':
+            appointment.endtime = endtime
         appointment.save()
-        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + '/n Message:' + appointment.msg
-        sendSuccessEmail(appointment.user.username)
+        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + ' Message:' + appointment.msg
+        sendSuccessEmail(appointment.user.username, msg)
         return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
                                                                         'groom': appointment.groomingoptions,
                                                                         'starttime': appointment.starttime,
