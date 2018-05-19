@@ -344,13 +344,11 @@ def rescheduledetail(request, appid):
         appointment.msg = request.POST.get('msg')
         appointment.groomingoptions = request.POST.get('groom')
         starttime = request.POST.get('starttime')
-        appointment.starttime = format_datetime(starttime)
-        starttime = request.POST.get('endtime')
-        endtime = format_datetime('endtime')
+        endtime = request.POST.get('endtime')
         if starttime is not None and starttime != '':
-            appointment.starttime = starttime
+            appointment.starttime = format_datetime(starttime)
         if endtime is not None and endtime != '':
-            appointment.endtime = endtime
+            appointment.endtime = format_datetime('endtime')
         appointment.save()
         msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + ' Message:' + appointment.msg
         sendSuccessEmail(appointment.user.username, msg)
