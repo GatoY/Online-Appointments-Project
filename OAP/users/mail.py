@@ -9,7 +9,7 @@ def sendEmail(touser):
     # CNY2AUD = receiver.get_rate('AUD', 'CNY')
     host = 'smtp.gmail.com:587'
     fromuser = ''
-    pasword = ''
+    pasword = 'Lostwechat170921'
     # touser = 'derakhy@gmail.com'
     body = '<h1>' + "You have an appointment within 24 hours, please check it. <From Tom Grooming Company.>" + '</h1>'
     # body = '<h1>' + str(CNY2AUD) + '</h1>'
@@ -20,13 +20,6 @@ def sendEmail(touser):
     server = smtplib.SMTP(host)
     server.starttls()
     server.login(fromuser, pasword)
-    # f = open('toUserfile.txt', 'r')
-    # while (1):
-    #     touser = f.readline()[:-1]
-    #     if touser == '':
-    #
-    #     break
-    #touser= "derakhy@gmail.com"
     msg['to'] = touser
     server.sendmail(fromuser, touser, msg.as_string())
 def main():
