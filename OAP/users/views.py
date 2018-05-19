@@ -350,7 +350,7 @@ def rescheduledetail(request, appid):
         if endtime is not None and endtime != '':
             appointment.endtime = format_datetime('endtime')
         appointment.save()
-        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + ' Message:' + appointment.msg
+        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + str(appointment.starttime) + ' To ' + str(appointment.endtime) + ' Message:' + appointment.msg
         sendSuccessEmail(appointment.user.username, msg)
         return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
                                                                         'groom': appointment.groomingoptions,
