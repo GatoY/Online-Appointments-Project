@@ -302,7 +302,7 @@ def booking(request):
         appointment.endtime = format_datetime(request.POST.get('endtime'))
         thedog.save()
         appointment.save()
-        msg = 'Book for:' + dogname + ', Option:' + appointment.groomingoptions + ', Start at:' + appointment.starttime + ' To ' + appointment.endtime + '/n Message:' + appointment.msg
+        msg = 'Book for:' + dogname + ', Option:' + appointment.groomingoptions + ', Start at:' + str(appointment.starttime) + ' To ' + str(appointment.endtime) + ' Message:' + appointment.msg
         sendSuccessEmail(appointment.user.username, msg)
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
                                                                   'starttime': appointment.starttime,
@@ -328,6 +328,8 @@ def cancelconfirm(request, appid):
     appointment.delete()
     appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
     context = {'appointmentsList': appointmentsList}
+    msg = 'You have cancelled:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + str(appointment.starttime) + ' To ' + str(appointment.endtime) + ' Message:' + appointment.msg
+    sendSuccessEmail(current_user.username, msg)
     return render(request, 'users/cancel.html', context)
 
 
@@ -340,18 +342,25 @@ def reschedule(request):
 
 def rescheduledetail(request, appid):
     appointment = Appointments.objects.get(id=appid)
+    currentuser = request.user
+    username = currentuser.username
     if request.method == 'POST':
-        appointment.msg = request.POST.get('msg')
+        msg = request.POST.get('msg')
+        if msg is not None and msg != '':
+            appointment.msg = msg
         appointment.groomingoptions = request.POST.get('groom')
         starttime = request.POST.get('starttime')
         endtime = request.POST.get('endtime')
         if starttime is not None and starttime != '':
             appointment.starttime = format_datetime(starttime)
         if endtime is not None and endtime != '':
-            appointment.endtime = format_datetime('endtime')
+            appointment.endtime = format_datetime(endtime)
         appointment.save()
-        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + str(appointment.starttime) + ' To ' + str(appointment.endtime) + ' Message:' + appointment.msg
-        sendSuccessEmail(appointment.user.username, msg)
+        msg = 'Book for:' + appointment.dog.name + ', Option:' + appointment.groomingoptions + ', Start at:' + str(
+            appointment.starttime) + ' To ' + str(
+            appointment.endtime) + ' Message:' + appointment.msg
+        print()
+        sendSuccessEmail(username, msg)
         return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
                                                                         'groom': appointment.groomingoptions,
                                                                         'starttime': appointment.starttime,
