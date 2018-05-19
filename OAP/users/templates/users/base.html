@@ -82,20 +82,24 @@
         <ul class="nav">
 
             <li><a href="{% url 'users:home' %}">Home</a></li>
-{#            <li><a href="{% url 'users:schedule' %}">Available Schedule</a></li>#}
+            {#            <li><a href="{% url 'users:schedule' %}">Available Schedule</a></li>#}
             <li class="has-sub">
                 <a href="javascript:void(0);"><span>Groom Your Dog</span><i
                         class="fa fa-caret-right fa-fw pull-right"></i></a>
                 <ul class="sub-menu">
-                    <li><a href="{% url 'users:mybook' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Appointments</a>
-                    </li>
+                    <li><a href="{% url 'users:mybook' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Appointments Timetable</a></li>
+                    <li><a href="{% url 'users:mybooklist' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;My Appointments Detail</a></li>
                     <li><a href="{% url 'users:availbleschedule' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Available
                         Schedule</a></li>
-                    <li><a href="{% url 'users:booking' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Make an Appointment</a></li>
-                    <li><a href="{% url 'users:cancel' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Cancel Appointment</a></li>
-                    <li><a href="{% url 'users:reschedule' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Reschedule Appointment</a></li>
+                    <li><a href="{% url 'users:booking' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Make an
+                        Appointment</a></li>
+                    <li><a href="{% url 'users:cancel' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Cancel Appointment</a>
+                    </li>
+                    <li><a href="{% url 'users:reschedule' %}"><i class="fa fa-circle-o fa-fw"></i>&nbsp;Reschedule
+                        Appointment</a></li>
                 </ul>
             </li>
+
         </ul>
     </div>
 

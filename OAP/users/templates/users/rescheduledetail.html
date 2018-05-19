@@ -1,0 +1,143 @@
+﻿{% extends 'users/base.html' %}
+{% load static %}
+{% block header %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <link href="{% static 'users/css/bootstrap-datetimepicker.css' %}" rel="stylesheet">
+    <script src="{% static 'users/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    .shadow-textarea textarea.form-control::placeholder {
+    font-weight: 300;
+    }
+    .shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+    }
+
+{% endblock %}
+{% block content %}
+    {% if appointment %}
+        <form action="{% url 'users:rescheduledetail' appointment.id %}" method="post">
+            {% csrf_token %}
+            <!--{{ form.date }} -->
+            <h2>Reschedule Appointments Form</h2>
+            <br>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label for="dog">Pets Name:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-control" name="name" type="text" readonly>
+                            {{ appointment.dog.name }}
+                        </label>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label for="groom">Grooming Options:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-control" name="groom">
+                            <option>Wash Only</option>
+                            <option>Wash and Nail Clipping</option>
+                            <option>Deluxe Grooming</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <br>
+            <div class="control-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label class="control-label">StartTime Picking</label>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group date" id="starttime">
+                            <input type="text" class="form-control" name="starttime" placeholder="{{ appointment.starttime }}"/>
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                        </div>
+                        <script>$('#starttime').datetimepicker();</script>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="control-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label class="control-label">EndTime Picking</label>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group date" id="endtime">
+                            <input type="text" class="form-control" name="endtime" placeholder="{{ appointment.endtime }}"/>
+                            <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar">
+                            </span>
+                        </span>
+                        </div>
+                        <script>$('#endtime').datetimepicker();</script>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group shadow-textarea">
+                        <label for="id_msg">Leave a message for groomer:</label>
+                        <textarea class="form-control z-depth-1" id="id_msg" name="msg" rows="3"
+                                  placeholder="Write something here...">{{ appointment.msg }}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary" value="submit">Reschedule</button>
+                    {#        <input type="submit" value="submit"/>#}
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                $('.form_datetime').datetimepicker({
+                    //language:  'fr',
+                    weekStart: 1,
+                    todayBtn: 1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1
+                });
+            </script>
+        </form>
+    {% else %}
+        <h1>You haven't added your pets yet, Please add your pets.</h1>
+    {% endif %}
+{% endblock content %}
+<!-- The rest of my form -->

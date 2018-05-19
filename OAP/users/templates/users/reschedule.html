@@ -2,63 +2,41 @@
 {% load static %}
 
 {% block content %}
-    <h2>Pet Info</h2>
-    {% if flag %}
-    <p class="text-success">Edit Successfully!</p>
+    {% if appointmentsList %}
+        <h2>Select the appointment you would like cancel.</h2>
+
+        <br>
+        <br>
+        <br>
+        {% for app in appointmentsList %}
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group shadow-textarea">
+                        <label class="form-control" name="name" type="text" readonly>
+                            {{ app.dog.name }}
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-control" name="name" type="text" readonly>
+                        {{ app.starttime }}-{{ app.endtime }}
+                    </label>
+                </div>
+                <div class="col-md-3">
+                    <a href="{% url 'users:rescheduledetail' app.id %}">
+                    <button type="button" class="btn btn-warning" value="submit">Reschedule</button>
+                    </a>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <br>
+            <br>
+        {% endfor %}
+    {% else %}
+        <h2>You have no appointments yet.</h2>
     {% endif %}
-    <form action="{% url 'users:editdoginfo' id %}" method="post">
-    {% csrf_token %}
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="form-group shadow-textarea">
-                    <label for="address">Name:</label>
-                    <input class="form-control" name="name" type="text" placeholder="{{ name }}">
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="form-group shadow-textarea">
-                    <label for="address">Breed:</label>
-                    <input class="form-control" name="breed" type="text" placeholder="{{ breed }}">
-
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="form-group shadow-textarea">
-                    <label for="address">Date of Birth:</label>
-                    <input class="form-control" name="dob" type="text" onfocus="(this.type='date')" placeholder="{{ dob }}">
-
-                </div>
-            </div>
-            <div class="col-md-3"></div>
-        </div>
-
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-                {#        <input type="submit" value="submit"/>#}
-                <div class="col-md-4"></div>
-            </div>
-        </div>
-
-    </form>
-
 {% endblock content %}

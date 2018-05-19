@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.views.decorators.csrf import csrf_protect
 from django.utils import timezone
 from .models import userInfo, Dog, Appointments
-from .mail import sendEmail
+from .mail import sendEmail, sendSuccessEmail
 
 import time
 import re
@@ -194,6 +194,12 @@ def mybook(request):
     context = {'appointmentsList': appointmentsList, 'week': week, 'datelist': datelist}
     return render(request, 'users/mybook.html', context)
 
+def mybooklist(request):
+    current_user = request.user
+    appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
+    context = {'appointmentsList': appointmentsList}
+    return render(request, 'users/mybooklist.html', context)
+
 
 class datelist_detail():
     year = 0
@@ -290,13 +296,16 @@ def booking(request):
         thedog = Dog.objects.get(name=dogname, owner=current_user)
         appointment.dog = thedog
         appointment.msg = request.POST.get('msg')
+        appointment.groomingoptions = request.POST.get('groom')
         appointment.starttime = format_datetime(request.POST.get('starttime'))
         appointment.endtime = format_datetime(request.POST.get('endtime'))
         thedog.save()
         appointment.save()
+        sendSuccessEmail(appointment.user.username)
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
                                                                   'starttime': appointment.starttime,
                                                                   'endtime': appointment.starttime,
+                                                                  'groom': appointment.groomingoptions,
                                                                   'msg': appointment.msg})
         # return redirect('../../users/home')
         # form = MakeAppointmentsForm()
@@ -325,6 +334,27 @@ def reschedule(request):
     appointmentsList = Appointments.objects.filter(endtime__gte=now, user=current_user)
     context = {'appointmentsList': appointmentsList}
     return render(request, 'users/reschedule.html', context)
+
+
+def rescheduledetail(request, appid):
+    appointment = Appointments.objects.get(id=appid)
+    if request.method == 'POST':
+        appointment.msg = request.POST.get('msg')
+        appointment.groomingoptions = request.POST.get('groom')
+        starttime = request.POST.get('starttime')
+        if starttime is not None:
+            appointment.starttime = format_datetime(starttime)
+        endtime = request.POST.get('endtime')
+        if endtime is not None:
+            appointment.endtime = format_datetime(endtime)
+        appointment.save()
+        sendSuccessEmail(appointment.user.username)
+        return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
+                                                                        'groom': appointment.groomingoptions,
+                                                                        'starttime': appointment.starttime,
+                                                                        'endtime': appointment.starttime,
+                                                                        'msg': appointment.msg})
+    return render(request, 'users/rescheduledetail.html', context={'appointment': appointment})
 
 
 def bookavailable(request):

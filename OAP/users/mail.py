@@ -9,7 +9,7 @@ def sendEmail(touser):
     # CNY2AUD = receiver.get_rate('AUD', 'CNY')
     host = 'smtp.gmail.com:587'
     fromuser = ''
-    pasword = 'Lostwechat170921'
+    pasword = ''
     # touser = 'derakhy@gmail.com'
     body = '<h1>' + "You have an appointment within 24 hours, please check it. <From Tom Grooming Company.>" + '</h1>'
     # body = '<h1>' + str(CNY2AUD) + '</h1>'
@@ -22,6 +22,21 @@ def sendEmail(touser):
     server.login(fromuser, pasword)
     msg['to'] = touser
     server.sendmail(fromuser, touser, msg.as_string())
+
+def sendSuccessEmail(touser):
+    host = 'smtp.gmail.com:587'
+    fromuser = ''
+    pasword = ''
+    body = '<h1>' + "You have booked successfully. <From Tom Grooming Company.>" + '</h1>'
+    msg = MIMEText(body, 'html')
+    msg['subject'] = 'You will get a reminder for your grooming appointment before 24 hours'
+    msg['from'] = fromuser
+    server = smtplib.SMTP(host)
+    server.starttls()
+    server.login(fromuser, pasword)
+    msg['to'] = touser
+    server.sendmail(fromuser, touser, msg.as_string())
+
 def main():
     sendEmail()
 
