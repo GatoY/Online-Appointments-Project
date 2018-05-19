@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="304" column="42" lean-forward="false" selection-start-line="304" selection-start-column="42" selection-end-line="304" selection-end-column="42" />
+            <state relative-caret-position="620">
+              <caret line="350" column="51" lean-forward="true" selection-start-line="350" selection-start-column="51" selection-end-line="350" selection-end-column="51" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -53,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="99">
@@ -192,8 +192,8 @@
         <option value="$PROJECT_DIR$/users/templates/users/rescheduledetail.html" />
         <option value="$PROJECT_DIR$/users/templates/users/booklist.html" />
         <option value="$PROJECT_DIR$/users/templates/users/mybooklist.html" />
-        <option value="$PROJECT_DIR$/users/views.py" />
         <option value="$PROJECT_DIR$/users/templates/users/base.html" />
+        <option value="$PROJECT_DIR$/users/views.py" />
       </list>
     </option>
   </component>
@@ -705,16 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="304" column="42" lean-forward="false" selection-start-line="304" selection-start-column="42" selection-end-line="304" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -722,6 +712,16 @@
           <folding>
             <element signature="e#5081#5087#0#HTML" expanded="true" />
             <element signature="e#5403#5409#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="350" column="51" lean-forward="true" selection-start-line="350" selection-start-column="51" selection-end-line="350" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>

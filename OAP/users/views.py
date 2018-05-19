@@ -301,7 +301,7 @@ def booking(request):
         appointment.endtime = format_datetime(request.POST.get('endtime'))
         thedog.save()
         appointment.save()
-        # sendSuccessEmail(appointment.user.username)
+        sendSuccessEmail(appointment.user.username)
         return render(request, 'users/bookSuccess.html', context={'dogname': dogname,
                                                                   'starttime': appointment.starttime,
                                                                   'endtime': appointment.starttime,
@@ -348,7 +348,7 @@ def rescheduledetail(request, appid):
         if endtime is not None:
             appointment.endtime = format_datetime(endtime)
         appointment.save()
-        # sendSuccessEmail(appointment.user.username)
+        sendSuccessEmail(appointment.user.username)
         return render(request, 'users/rescheduleSuccess.html', context={'dogname': appointment.dog.name,
                                                                         'groom': appointment.groomingoptions,
                                                                         'starttime': appointment.starttime,
