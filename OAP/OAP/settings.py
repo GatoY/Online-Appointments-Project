@@ -126,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 CRONJOBS = (
-    ('00 10 * * *','users.mail.sendEmail'),
+    ('00 10 * * *', 'users.mail.sendEmail'),
 )
 
 STATIC_URL = '/static/'
