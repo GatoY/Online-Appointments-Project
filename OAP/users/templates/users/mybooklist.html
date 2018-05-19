@@ -1,0 +1,99 @@
+﻿{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+    {% if appointmentsList %}
+        <h2>My Appointments.</h2>
+        <br>
+        <br>
+        {% for appointment in appointmentsList %}
+            <h4>Better Choose Tom! ;)</h4>
+            <br>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label for="dog">Pets Name:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-control" name="name" type="text" readonly>
+                            {{ appointment.dog.name }}
+                        </label>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label for="groom">Grooming Options:</label>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-control" name="name" type="text" readonly>
+                            {{ appointment.groomingoptions }}
+                        </label>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <br>
+            <div class="control-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label class="control-label">StartTime Picking</label>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group date">
+                            <label class="form-control" name="name" type="text" readonly>
+                                {{ appointment.starttime }}
+                            </label>
+                        </div>
+                        <script>$('#starttime').datetimepicker();</script>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="control-group">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <label class="control-label">EndTime Picking</label>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group date" id="endtime">
+                            <label class="form-control" name="name" type="text" readonly>
+                                {{ appointment.endtime }}
+                            </label>
+                        </div>
+                        <script>$('#endtime').datetimepicker();</script>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group shadow-textarea">
+                        <label for="id_msg">Message for groomer:</label>
+                        <textarea class="form-control z-depth-1" id="id_msg" name="msg" rows="3"
+                                  readonly>{{ appointment.msg }}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h2>You have no appointments yet.</h2>
+    {% endif %}
+{% endblock content %}
