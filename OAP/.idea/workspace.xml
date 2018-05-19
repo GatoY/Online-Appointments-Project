@@ -11,7 +11,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="611">
@@ -53,14 +53,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="90" column="56" lean-forward="false" selection-start-line="90" selection-start-column="56" selection-end-line="90" selection-end-column="56" />
+            <state relative-caret-position="99">
+              <caret line="71" column="93" lean-forward="true" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
               <folding>
-                <element signature="e#4924#4930#0#HTML" expanded="true" />
-                <element signature="e#5375#5381#0#HTML" expanded="true" />
+                <element signature="e#5081#5087#0#HTML" expanded="true" />
+                <element signature="e#5403#5409#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,7 +142,6 @@
       <find>petslist</find>
       <find>django-crontab</find>
       <find>Tom</find>
-      <find>booking</find>
       <find>get</find>
       <find>get g</find>
       <find>userLogin</find>
@@ -150,6 +149,7 @@
       <find>group</find>
       <find>booksucess</find>
       <find>boo</find>
+      <find>booking</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/users/static</dir>
@@ -187,13 +187,13 @@
         <option value="$PROJECT_DIR$/users/templates/users/cancel.html" />
         <option value="$PROJECT_DIR$/users/templates/users/bookSuccess.html" />
         <option value="$PROJECT_DIR$/users/templates/users/rescheduleSuccess.html" />
-        <option value="$PROJECT_DIR$/users/templates/users/base.html" />
         <option value="$PROJECT_DIR$/users/urls.py" />
         <option value="$PROJECT_DIR$/users/mail.py" />
         <option value="$PROJECT_DIR$/users/templates/users/rescheduledetail.html" />
         <option value="$PROJECT_DIR$/users/templates/users/booklist.html" />
         <option value="$PROJECT_DIR$/users/templates/users/mybooklist.html" />
         <option value="$PROJECT_DIR$/users/views.py" />
+        <option value="$PROJECT_DIR$/users/templates/users/base.html" />
       </list>
     </option>
   </component>
@@ -649,17 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="90" column="56" lean-forward="false" selection-start-line="90" selection-start-column="56" selection-end-line="90" selection-end-column="56" />
-          <folding>
-            <element signature="e#4924#4930#0#HTML" expanded="true" />
-            <element signature="e#5375#5381#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -722,6 +711,17 @@
           <caret line="304" column="42" lean-forward="false" selection-start-line="304" selection-start-column="42" selection-end-line="304" selection-end-column="42" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/templates/users/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="71" column="93" lean-forward="true" selection-start-line="71" selection-start-column="93" selection-end-line="71" selection-end-column="93" />
+          <folding>
+            <element signature="e#5081#5087#0#HTML" expanded="true" />
+            <element signature="e#5403#5409#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
